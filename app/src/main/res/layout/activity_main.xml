@@ -14,7 +14,6 @@
         android:layout_marginTop="50dp"
         android:text="Le pire sauveteur :"
         android:textSize="28dp"
-        app:autoSizePresetSizes="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -68,6 +67,7 @@
             android:id="@+id/mediumDifficultyRadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="Moyen" />
 
         <RadioButton
