@@ -40,7 +40,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Quiz quiz = quizArrayList.get(position);
-        holder.imageView.setImageResource(quiz.flagid);
+        holder.imageView.setImageResource(quiz.imageid);
         String text = "";
         // Parcourir quiz.questions
         // pour chaque string dans questions + (concatener ) avec un espace et la variable text
