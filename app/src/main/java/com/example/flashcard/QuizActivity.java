@@ -3,6 +3,7 @@ package com.example.flashcard;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -51,10 +52,10 @@ public class QuizActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         questions = intent.getParcelableArrayListExtra("quiz");
-
+        Log.d("QuizActivity", "question = " + questions);
 
         idquestion = intent.getIntExtra("idquestion", 0);
-
+        Log.d("QuizActivity", "idquestion = " + idquestion);
 
         quest = questions.get(idquestion);
         ArrayList<String> options = quest.questions;
@@ -106,8 +107,5 @@ public class QuizActivity extends AppCompatActivity {
         else {
             resultView.setText("Mauvaise réponse");
         }
-
-
-
     }
 }
