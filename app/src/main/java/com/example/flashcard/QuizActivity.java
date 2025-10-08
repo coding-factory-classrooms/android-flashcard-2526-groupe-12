@@ -1,6 +1,8 @@
 package com.example.flashcard;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +21,17 @@ public class QuizActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        int srcImageId = R.drawable.point_interogation;
+
+        ImageView imageView = (ImageView) findViewById(R.id.flagImageView);
+        imageView.setImageResource(srcImageId);
+
+        imageView.setOnClickListener( view -> {
+            Intent intent = new Intent(this, MediaInteractActivity.class);
+            intent.putExtra("image", srcImageId);
+            startActivity(intent);
         });
 
     }

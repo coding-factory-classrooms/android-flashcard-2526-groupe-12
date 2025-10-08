@@ -23,7 +23,7 @@ public class MediaInteractActivity extends AppCompatActivity {
             return insets;
         });
 
-        ImageView UKFlag = (ImageView) findViewById(R.id.UKFlag);
+        /* ImageView UKFlag = (ImageView) findViewById(R.id.UKFlag);
 
         UKFlag.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +31,12 @@ public class MediaInteractActivity extends AppCompatActivity {
                 UKFlag.setImageResource(R.drawable.flag_japon);
             }
         });
+ */
+        ImageView imageView = (ImageView) findViewById(R.id.UKFlag);
+
+        int imageId = getIntent().getIntExtra("image", R.drawable.flag_uk);
+
+        imageView.setImageResource(imageId);
 
 
     }

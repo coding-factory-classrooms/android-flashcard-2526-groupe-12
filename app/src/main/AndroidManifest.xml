@@ -14,18 +14,21 @@
         <activity
             android:name=".MediaInteractActivity"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ListQuestionActivity"
             android:exported="false" />
         <activity
             android:name=".QuizActivity"
-            android:exported="false" />
+            android:exported="true" >
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
+        </activity>
+
         <activity
             android:name=".AboutActivity"
             android:exported="false" />
