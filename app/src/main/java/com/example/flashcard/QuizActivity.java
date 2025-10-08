@@ -62,7 +62,7 @@ public class QuizActivity extends AppCompatActivity {
             }
         }
 
-        flagImageView.setImageResource(question.flagid);
+        flagImageView.setImageResource(question.imageid);
 
 
 
