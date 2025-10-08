@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -45,15 +46,15 @@ public class QuizActivity extends AppCompatActivity {
         resultView = findViewById(R.id.resultView);
         confirmButton = findViewById(R.id.confirmButton);
         inputRadioGroup  = findViewById(R.id.inputRadioGroup);
-        ImageView flagImageView = findViewById(R.id.flagImageView);
+        ImageView imageView = findViewById(R.id.flagImageView);
 
 
         Intent intent = getIntent();
         questions = intent.getParcelableArrayListExtra("quiz");
-        Log.d("QuizActivity", "question = " + questions);
+
 
         idquestion = intent.getIntExtra("idquestion", 0);
-        Log.d("QuizActivity", "idquestion = " + idquestion);
+
 
         quest = questions.get(idquestion);
         ArrayList<String> options = quest.questions;
@@ -66,7 +67,15 @@ public class QuizActivity extends AppCompatActivity {
             }
         }
 
-        flagImageView.setImageResource(quest.imageid);
+        imageView.setImageResource(quest.imageid);
+
+
+
+        imageView.setOnClickListener( view -> {
+            Intent intent_media = new Intent(this, MediaInteractActivity.class);
+            intent_media.putExtra("image", quest.imageid);
+            startActivity(intent_media);
+        });
 
 
 
@@ -97,5 +106,8 @@ public class QuizActivity extends AppCompatActivity {
         else {
             resultView.setText("Mauvaise réponse");
         }
+
+
+
     }
 }
