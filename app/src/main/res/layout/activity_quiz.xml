@@ -17,16 +17,6 @@
         app:layout_constraintTop_toBottomOf="@+id/questionNumberTextView"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
-    <RadioGroup
-        android:id="@+id/AwserRadioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flagImageView" />
-
     <Button
         android:id="@+id/confirmButton"
         android:layout_width="wrap_content"
@@ -35,7 +25,7 @@
         android:text="Valider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AwserRadioButton" />
+        app:layout_constraintTop_toBottomOf="@+id/inputRadioGroup" />
 
     <TextView
         android:id="@+id/questionNumberTextView"
@@ -50,10 +40,61 @@
         android:id="@+id/returnButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:text="Retour"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/inputRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flagImageView">
+
+        <RadioButton
+            android:id="@+id/inputRadioButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/inputRadioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/inputRadioButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RadioButton" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/awserTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Réponse :"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/confirmButton" />
+
+    <TextView
+        android:id="@+id/correctAwserTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="La bonne réponse"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/returnButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/awserTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
