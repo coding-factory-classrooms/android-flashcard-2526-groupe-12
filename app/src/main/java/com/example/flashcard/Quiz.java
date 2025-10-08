@@ -23,6 +23,25 @@ public class Quiz implements Parcelable {
         this.difficulty = difficulty;
     }
 
+    protected Quiz(Parcel in) {
+        imageid = in.readInt();
+        questions = in.createStringArrayList();
+        response = in.readInt();
+        difficulty = in.readInt();
+    }
+
+    public static final Creator<Quiz> CREATOR = new Creator<Quiz>() {
+        @Override
+        public Quiz createFromParcel(Parcel in) {
+            return new Quiz(in);
+        }
+
+        @Override
+        public Quiz[] newArray(int size) {
+            return new Quiz[size];
+        }
+    };
+
     @Override
     public String toString() {
         return "Quiz{" +
@@ -40,7 +59,10 @@ public class Quiz implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-
+        dest.writeInt(imageid);
+        dest.writeStringList(questions);
+        dest.writeInt(response);
+        dest.writeInt(difficulty);
     }
 }
 

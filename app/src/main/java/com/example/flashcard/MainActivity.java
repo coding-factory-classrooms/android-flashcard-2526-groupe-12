@@ -29,29 +29,12 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(TAG, "Hello Flashcard");
 
-        ArrayList<Quiz> quizList = new ArrayList<>();
 
-        ArrayList<String> questions = new ArrayList<>();
-        questions.add("Commencer un massage cardiaque");
-        questions.add("Lui rouler une pelle");
-        questions.add("Tu est dans une tempête  et c'est ok");
-
-        quizList.add(new Quiz(R.drawable.arret, questions,1,0 ));
-
-        ArrayList<String> questions2 = new ArrayList<>();
-        questions.add("Japon");
-        questions.add("Royaume-Uni");
-        questions.add("Espagne");
-        quizList.add(new Quiz(R.drawable.flag_japon, questions2,0,0 ));
-
-        ArrayList<String> questions3 = new ArrayList<>();
-        questions.add("Japon");
-        questions.add("Royaume-Uni");
-        questions.add("Espagne");
-        quizList.add(new Quiz(R.drawable.flag_england, questions3, 1,0 ));
-
+        ArrayList<Quiz> quizList = QuizLoader.loadQuiz();
         Intent intent = new Intent(this, QuizActivity.class);
         intent.putExtra("quiz", quizList);
         startActivity(intent);
     }
+
+
 }

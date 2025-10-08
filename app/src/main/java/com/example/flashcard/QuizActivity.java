@@ -30,7 +30,9 @@ public class QuizActivity extends AppCompatActivity {
     TextView resultView;
     RadioGroup inputRadioGroup;
     Button confirmButton;
-    Parcelable[] questions;
+    private int idquestion;
+    private Quiz quest;
+    private ArrayList<Quiz> questions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +51,16 @@ public class QuizActivity extends AppCompatActivity {
         inputRadioGroup  = findViewById(R.id.inputRadioGroup);
         ImageView flagImageView = findViewById(R.id.flagImageView);
 
+
         Intent intent = getIntent();
-        ArrayList<Quiz> questions = intent.getParcelableArrayListExtra("quiz");
-        Quiz question = questions.get(0);
-        ArrayList<String> options = question.questions;
+        questions = intent.getParcelableArrayListExtra("quiz");
+        Log.d("QuizActivity", "question = " + questions);
+
+        idquestion = intent.getIntExtra("idquestion", 0);
+        Log.d("QuizActivity", "idquestion = " + idquestion);
+
+        quest = questions.get(idquestion);
+        ArrayList<String> options = quest.questions;
 
         for (int i = 0; i < inputRadioGroup.getChildCount(); i++) {
             View child = inputRadioGroup.getChildAt(i);
@@ -62,7 +70,7 @@ public class QuizActivity extends AppCompatActivity {
             }
         }
 
-        flagImageView.setImageResource(question.imageid);
+        flagImageView.setImageResource(quest.imageid);
 
 
 
@@ -72,20 +80,26 @@ public class QuizActivity extends AppCompatActivity {
         inputRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(@NonNull RadioGroup group, int checkedId) {
-                RadioButton radioButton = findViewById(checkedId);
                 confirmButton.setOnClickListener( view -> {
-                    if (radioButton.getText() == options.get(question.response) ){
-                        resultView.setText("Bonne réponse");
-                    }
-                    else {
-                        resultView.setText("Mauvaise réponse");
-                    }
+                    OnConfirmButtonClick(checkedId);
                 });
-
             }
-
         });
+    }
 
+    private void OnConfirmButtonClick(int checkedId) {
+        RadioButton radioButton = findViewById(checkedId);
 
+        if (radioButton.getText() == quest.questions.get(quest.response) ){
+            resultView.setText("Bonne réponse");
+            Intent intent = new Intent(this, QuizActivity.class);
+            intent.putExtra("idquestion", idquestion +1);
+            intent.putExtra("quiz",questions);
+            startActivity(intent);
+            finish();
+        }
+        else {
+            resultView.setText("Mauvaise réponse");
+        }
     }
 }
