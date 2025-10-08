@@ -20,7 +20,7 @@ public class QuizLoader {
         questions.add("Japon");
         questions.add("Royaume-Uni");
         questions.add("Espagne");
-        quizList.add(new Quiz(R.drawable.flag_japon, questions, 0, 0));
+        quizList.add(new Quiz(R.drawable.flag_england, questions, 0, 0));
 
         questions = new ArrayList<>();
         questions.add("Japon");
