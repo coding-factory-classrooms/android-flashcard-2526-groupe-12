@@ -30,9 +30,7 @@ public class ListQuestionActivity extends AppCompatActivity {
         // Ca peut venir d'une API, un DB etc
         ArrayList<Quiz> quizArrayList = new ArrayList<>();
         for (int i = 0; i < 5000; i++) {
-            /*quizArrayList.add(new Quiz(R.drawable.flag_usa, "$", 1.17f));
-            quizArrayList.add(new Quiz(R.drawable.flag_japon, "¥", 176f));
-            quizArrayList.add(new Quiz(R.drawable.flag_uk, "£", 6.20f));*/
+            ArrayList<Quiz> quizList = QuizLoader.loadQuiz();
         }
 
         // On branche tout le monde
