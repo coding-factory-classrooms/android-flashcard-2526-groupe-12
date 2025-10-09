@@ -3,6 +3,7 @@ package com.example.flashcard;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -10,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.ArrayList;
 
 public class ResultActivity extends AppCompatActivity {
 
@@ -31,9 +34,13 @@ public class ResultActivity extends AppCompatActivity {
         int nbrquestvalid = intent.getIntExtra("nbrquestvalid", 0);
         int nbrquestions = intent.getIntExtra("nbrquestions", 0);
         int diffuclt = intent.getIntExtra("difficult", 0);
+        ArrayList<Quiz> nbrquesterror = intent.getParcelableArrayListExtra("nbrquesterror");
         TextView difficultTextView = findViewById(R.id.difficultTextView);
         TextView resultTextView = findViewById(R.id.resultTextView);
         TextView pourcentageTextView = findViewById(R.id.pourcentageTextView);
+        Button errorButton = findViewById(R.id.errorButton);
+
+
 
         if (diffuclt==0){
             difficultTextView.setText("Mode facile");
@@ -46,7 +53,16 @@ public class ResultActivity extends AppCompatActivity {
         resultTextView.setText(nbrquestvalid + "/" + nbrquestions);
 
         int pourcentagecalcul = (nbrquestvalid * 100) / nbrquestions;
-        pourcentageTextView.setText("Tu a eu "+String.valueOf(pourcentagecalcul) + "% pourcent de réussite");
+        pourcentageTextView.setText("Tu a eu "+ pourcentagecalcul + "% pourcent de réussite");
+
+        if (nbrquesterror!=null){
+            errorButton.setOnClickListener(view -> {
+                Intent intent_quiz = new Intent(this, QuizActivity.class);
+                intent_quiz.putExtra("quiz",nbrquesterror);
+                startActivity(intent_quiz);
+                finish();
+            });
+        }
 
     }
 }

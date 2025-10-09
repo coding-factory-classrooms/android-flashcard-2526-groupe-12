@@ -57,12 +57,19 @@ public class QuizActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.flagImageView);
         questionNumberTextView = findViewById(R.id.questionNumberTextView);
         questvalide = false;
-        nbrquesterror = new ArrayList<>();
+
 
 
         Intent intent = getIntent();
         questions = intent.getParcelableArrayListExtra("quiz");
         Log.d("QuizActivity", "question = " + questions);
+
+        nbrquestvalid = intent.getIntExtra("nbrquestvalid", 0);
+        nbrquesterror = intent.getParcelableArrayListExtra("nbrquesterror");
+        if (nbrquesterror == null)
+        {
+            nbrquesterror = new ArrayList<>();
+        }
 
 
         idquestion = intent.getIntExtra("idquestion", 0);
@@ -120,10 +127,17 @@ public class QuizActivity extends AppCompatActivity {
             }
         }
 
-        confirmButton.setText("Question suivante");
+
+
+        if (idquestion + 1 >= questions.size()) {
+            confirmButton.setText("Voir les statistiques");
+        }
+        else{
+            confirmButton.setText("Question suivante");
+        }
         confirmButton.setOnClickListener(view -> {
 
-            if (idquestion +1 >= questions.size()) {
+            if (idquestion + 1 >= questions.size()) {
                 Intent intent_result = new Intent(this, ResultActivity.class);
                 intent_result.putExtra("nbrquestions", questions.size());
                 intent_result.putExtra("nbrquestvalid", nbrquestvalid);
@@ -135,6 +149,8 @@ public class QuizActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, QuizActivity.class);
                 intent.putExtra("idquestion", idquestion + 1);
                 intent.putExtra("quiz", questions);
+                intent.putExtra("nbrquestvalid", nbrquestvalid);
+                intent.putExtra("nbrquesterror", nbrquesterror);
                 startActivity(intent);
                 finish();
             }
