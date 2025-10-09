@@ -60,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
                 noDifficultyTextView.setVisibility(TextView.VISIBLE);
             }
         });
-
-
         //Takes the user to the about activity
         Button aboutButton = findViewById(R.id.aboutButton);
         aboutButton.setOnClickListener(view ->{

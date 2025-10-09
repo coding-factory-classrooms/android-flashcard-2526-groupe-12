@@ -44,7 +44,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder> {
         String text = "";
         // Parcourir quiz.questions
         // pour chaque string dans questions + (concatener ) avec un espace et la variable text
-        for (String question : quiz.questions) {
+        for (String question : quiz.choice) {
             text += question + " ";
         }
         //ArrayList<String> a = {"a", "b", "c"};

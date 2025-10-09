@@ -2,7 +2,6 @@ package com.example.flashcard;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -31,6 +29,14 @@ public class QuizActivity extends AppCompatActivity {
     private int idquestion;
     private Quiz quest;
     private ArrayList<Quiz> questions;
+    private TextView correctAwserTextView;
+    private TextView questionNumberTextView;
+    private boolean questvalide;
+    private int nbrquestvalid;
+    private int nbrquestions;
+
+    private ArrayList<Quiz> nbrquesterror;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,25 +50,41 @@ public class QuizActivity extends AppCompatActivity {
         });
 
 
-        resultView = findViewById(R.id.resultView);
+        resultView = findViewById(R.id.awserTextView);
+        correctAwserTextView = findViewById(R.id.correctAwserTextView);
         confirmButton = findViewById(R.id.confirmButton);
-        inputRadioGroup  = findViewById(R.id.inputRadioGroup);
+        inputRadioGroup = findViewById(R.id.inputRadioGroup);
         ImageView imageView = findViewById(R.id.flagImageView);
+        questionNumberTextView = findViewById(R.id.questionNumberTextView);
+        questvalide = false;
+
 
 
         Intent intent = getIntent();
         questions = intent.getParcelableArrayListExtra("quiz");
         Log.d("QuizActivity", "question = " + questions);
 
+        nbrquestvalid = intent.getIntExtra("nbrquestvalid", 0);
+        nbrquesterror = intent.getParcelableArrayListExtra("nbrquesterror");
+        if (nbrquesterror == null)
+        {
+            nbrquesterror = new ArrayList<>();
+        }
+
+
         idquestion = intent.getIntExtra("idquestion", 0);
         Log.d("QuizActivity", "idquestion = " + idquestion);
 
+        nbrquestions = questions.size();
+        int idquest = idquestion + 1;
+        questionNumberTextView.setText(idquest + "/" + nbrquestions);
+
         quest = questions.get(idquestion);
-        ArrayList<String> options = quest.questions;
+        ArrayList<String> options = quest.choice;
 
         for (int i = 0; i < inputRadioGroup.getChildCount(); i++) {
             View child = inputRadioGroup.getChildAt(i);
-            if (child instanceof RadioButton ) {
+            if (child instanceof RadioButton) {
                 RadioButton radioButton = (RadioButton) child;
                 radioButton.setText(options.get(i));
             }
@@ -71,20 +93,17 @@ public class QuizActivity extends AppCompatActivity {
         imageView.setImageResource(quest.imageid);
 
 
-
-        imageView.setOnClickListener( view -> {
+        imageView.setOnClickListener(view -> {
             Intent intent_media = new Intent(this, MediaInteractActivity.class);
             intent_media.putExtra("image", quest.imageid);
             startActivity(intent_media);
         });
 
 
-
-
         inputRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(@NonNull RadioGroup group, int checkedId) {
-                confirmButton.setOnClickListener( view -> {
+                confirmButton.setOnClickListener(view -> {
                     OnConfirmButtonClick(checkedId);
                 });
             }
@@ -94,18 +113,46 @@ public class QuizActivity extends AppCompatActivity {
     private void OnConfirmButtonClick(int checkedId) {
         RadioButton radioButton = findViewById(checkedId);
 
-        if (radioButton.getText() == quest.questions.get(quest.response) ){
-            resultView.setText("Bonne réponse");
-            Intent intent = new Intent(this, QuizActivity.class);
-            intent.putExtra("idquestion", idquestion +1);
-            intent.putExtra("quiz",questions);
-            startActivity(intent);
-            finish();
+        if (!questvalide) {
+            if (radioButton.getText() == quest.choice.get(quest.response)) {
+                resultView.setText("Bonne réponse");
+                questvalide = true;
+                nbrquestvalid += 1;
+            } else {
+                questvalide = true;
+                resultView.setText("Mauvaise réponse");
+                correctAwserTextView.setText("La bonne réponse était " + quest.choice.get(quest.response));
+                nbrquesterror.add(quest);
+            }
         }
-        else {
-            TextView correctAwserTextView = findViewById(R.id.correctAwserTextView);
-            resultView.setText("Mauvaise réponse");
-            correctAwserTextView.setText("La Bonne réponse était : " + quest.questions.get(quest.response));
+
+
+
+        if (idquestion + 1 >= questions.size()) {
+            confirmButton.setText("Voir les statistiques");
         }
+        else{
+            confirmButton.setText("Question suivante");
+        }
+        confirmButton.setOnClickListener(view -> {
+
+            if (idquestion + 1 >= questions.size()) {
+                Intent intent_result = new Intent(this, ResultActivity.class);
+                intent_result.putExtra("nbrquestions", questions.size());
+                intent_result.putExtra("nbrquestvalid", nbrquestvalid);
+                intent_result.putExtra("nbrquesterror", nbrquesterror);
+                intent_result.putExtra("difficult", quest.difficulty);
+                startActivity(intent_result);
+                finish();
+            } else {
+                Intent intent = new Intent(this, QuizActivity.class);
+                intent.putExtra("idquestion", idquestion + 1);
+                intent.putExtra("quiz", questions);
+                intent.putExtra("nbrquestvalid", nbrquestvalid);
+                intent.putExtra("nbrquesterror", nbrquesterror);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }

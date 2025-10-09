@@ -31,7 +31,7 @@ public class ListQuestionActivity extends AppCompatActivity {
         // Ca peut venir d'une API, un DB etc
         ArrayList<Quiz> quizArrayList = new ArrayList<>();
         for (int i = 0; i < 5000; i++) {
-            ArrayList<Quiz> quizList = QuizLoader.loadQuiz();
+            ArrayList<Quiz> quizList = QuizLoader.loadQuiz(5);
         }
 
         // On branche tout le monde
