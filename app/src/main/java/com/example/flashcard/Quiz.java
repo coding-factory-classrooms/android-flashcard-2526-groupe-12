@@ -10,22 +10,22 @@ import java.util.ArrayList;
 public class Quiz implements Parcelable {
     public final int imageid;
 
-    public final ArrayList<String> questions;
+    public final ArrayList<String> choice;
 
     public final int response;
 
     public final int difficulty;
 
-    public Quiz(int imageid, ArrayList<String> questions, int response, int difficulty) {
+    public Quiz(int imageid, ArrayList<String> choice, int response, int difficulty) {
         this.imageid = imageid;
-        this.questions = questions;
+        this.choice = choice;
         this.response = response;
         this.difficulty = difficulty;
     }
 
     protected Quiz(Parcel in) {
         imageid = in.readInt();
-        questions = in.createStringArrayList();
+        choice = in.createStringArrayList();
         response = in.readInt();
         difficulty = in.readInt();
     }
@@ -46,7 +46,7 @@ public class Quiz implements Parcelable {
     public String toString() {
         return "Quiz{" +
                 "imageid=" + imageid +
-                ", questions=" + questions +
+                ", questions=" + choice +
                 ", response=" + response +
                 ", difficulty=" + difficulty +
                 '}';
@@ -60,7 +60,7 @@ public class Quiz implements Parcelable {
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(imageid);
-        dest.writeStringList(questions);
+        dest.writeStringList(choice);
         dest.writeInt(response);
         dest.writeInt(difficulty);
     }

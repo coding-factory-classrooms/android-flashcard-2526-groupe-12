@@ -34,15 +34,15 @@ public class MainActivity extends AppCompatActivity {
 
         //When the Quizz button is pressed, check the choosen difficulty setting and send it
         Button quizzButton = findViewById(R.id.quizzButton);
-        quizzButton.setOnClickListener(view ->{
-                Intent intent = new Intent(this, QuizActivity.class);
-                RadioGroup difficultyRadioGroup = findViewById(R.id.difficultyRadioGroup);
-                intent.putExtra("difficulty",difficultyRadioGroup.getCheckedRadioButtonId());
-                startActivity(intent);
+        quizzButton.setOnClickListener(view -> {
+            Intent intent = new Intent(this, QuizActivity.class);
+            RadioGroup difficultyRadioGroup = findViewById(R.id.difficultyRadioGroup);
+            intent.putExtra("difficulty", difficultyRadioGroup.getCheckedRadioButtonId());
+            startActivity(intent);
         });
         //Takes the user to the about activity
         Button aboutButton = findViewById(R.id.aboutButton);
-        aboutButton.setOnClickListener(view ->{
+        aboutButton.setOnClickListener(view -> {
             Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
         });
@@ -51,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, QuizActivity.class);
         intent.putExtra("quiz", quizList);
         startActivity(intent);
-}}
+    }
+}
 
 
 
