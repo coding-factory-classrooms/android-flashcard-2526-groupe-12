@@ -108,6 +108,12 @@ public class QuizActivity extends AppCompatActivity {
                 });
             }
         });
+        Button returnButton = findViewById(R.id.returnButton);
+        returnButton.setOnClickListener(view ->{
+            Intent intentReturn = new Intent(this, MainActivity.class);
+            startActivity(intentReturn);
+            finish();
+        });
     }
 
     private void OnConfirmButtonClick(int checkedId) {
@@ -116,11 +122,17 @@ public class QuizActivity extends AppCompatActivity {
         if (!questvalide) {
             if (radioButton.getText() == quest.choice.get(quest.response)) {
                 resultView.setText("Bonne réponse");
+                for (int i = 0; i < inputRadioGroup.getChildCount(); i++) {
+                    inputRadioGroup.getChildAt(i).setEnabled(false);
+                }
                 questvalide = true;
                 nbrquestvalid += 1;
             } else {
                 questvalide = true;
                 resultView.setText("Mauvaise réponse");
+                for (int i = 0; i < inputRadioGroup.getChildCount(); i++) {
+                    inputRadioGroup.getChildAt(i).setEnabled(false);
+                }
                 correctAwserTextView.setText("La bonne réponse était " + quest.choice.get(quest.response));
                 nbrquesterror.add(quest);
             }

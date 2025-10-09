@@ -64,5 +64,12 @@ public class ResultActivity extends AppCompatActivity {
             });
         }
 
+        Button menuButton = findViewById(R.id.menuButton);
+        menuButton.setOnClickListener(view ->{
+            Intent intentMenu = new Intent(this, MainActivity.class);
+            startActivity(intentMenu);
+            finish();
+        });
+
     }
 }
