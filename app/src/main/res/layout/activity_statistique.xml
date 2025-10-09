@@ -5,71 +5,60 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResultActivity">
+    tools:context=".StatistiqueActivity">
 
     <TextView
-        android:id="@+id/difficultTextView"
+        android:id="@+id/totalTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/resultTextView"
+        app:layout_constraintBottom_toTopOf="@+id/nbrstartquizTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/resultTextView"
+        android:id="@+id/moyenneTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/pourcentageTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/difficultTextView" />
-
-    <TextView
-        android:id="@+id/pourcentageTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/errorButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultTextView" />
-
-    <Button
-        android:id="@+id/errorButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Réviser mes erreurs"
-        app:layout_constraintBottom_toTopOf="@+id/shareButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pourcentageTextView" />
-
-    <Button
-        android:id="@+id/menuButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shareButton" />
+        app:layout_constraintTop_toBottomOf="@+id/falseresponseTextView" />
 
-    <Button
-        android:id="@+id/shareButton"
+    <TextView
+        android:id="@+id/nbrstartquizTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Partager"
-        app:layout_constraintBottom_toTopOf="@+id/menuButton"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/trueresponseTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/errorButton" />
+        app:layout_constraintTop_toBottomOf="@+id/totalTextView" />
+
+    <TextView
+        android:id="@+id/trueresponseTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/falseresponseTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nbrstartquizTextView" />
+
+    <TextView
+        android:id="@+id/falseresponseTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/moyenneTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trueresponseTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
