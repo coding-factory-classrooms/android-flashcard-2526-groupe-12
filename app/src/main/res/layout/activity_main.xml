@@ -55,7 +55,7 @@
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/difficultyTitleTextView" >
+        app:layout_constraintTop_toBottomOf="@+id/noDifficultyTextView">
 
         <RadioButton
             android:id="@+id/easyDifficultyRadioButton"
@@ -67,7 +67,7 @@
             android:id="@+id/mediumDifficultyRadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:checked="true"
+            android:checked="false"
             android:text="Moyen" />
 
         <RadioButton
@@ -76,5 +76,18 @@
             android:layout_height="wrap_content"
             android:text="Difficile" />
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/noDifficultyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Choissisez une difficulté pour commencer un quizz!"
+        android:textColor="#FF0000"
+        android:textColorLink="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/difficultyTitleTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
