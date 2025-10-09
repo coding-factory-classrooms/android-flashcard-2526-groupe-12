@@ -8,6 +8,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -36,12 +37,33 @@ public class MainActivity extends AppCompatActivity {
 
         //When the Quizz button is pressed, check the choosen difficulty setting and send it
         Button quizzButton = findViewById(R.id.quizzButton);
+        RadioButton easyRadioButton = findViewById(R.id.easyDifficultyRadioButton);
+        RadioButton mediumRadioButton = findViewById(R.id.mediumDifficultyRadioButton);
+        RadioButton hardRadioButton = findViewById(R.id.hardDifficultyRadioButton);
         quizzButton.setOnClickListener(view ->{
+            if (easyRadioButton.isChecked()){
                 Intent intent = new Intent(this, QuizActivity.class);
-                RadioGroup difficultyRadioGroup = findViewById(R.id.difficultyRadioGroup);
-                intent.putExtra("difficulty",difficultyRadioGroup.getCheckedRadioButtonId());
+                ArrayList<Quiz> quizList = QuizLoader.loadQuiz(0);
+                intent.putExtra("quiz", quizList);
                 startActivity(intent);
+            } else if (mediumRadioButton.isChecked()){
+                Intent intent = new Intent(this, QuizActivity.class);
+                ArrayList<Quiz> quizList = QuizLoader.loadQuiz(1);
+                intent.putExtra("quiz", quizList);
+                startActivity(intent);
+            } else if (hardRadioButton.isChecked()) {
+                Intent intent = new Intent(this, QuizActivity.class);
+                ArrayList<Quiz> quizList = QuizLoader.loadQuiz(2);
+                intent.putExtra("quiz", quizList);
+                startActivity(intent);
+            }
+            else {
+                TextView noDifficultyTextView = findViewById(R.id.noDifficultyTextView);
+                noDifficultyTextView.setVisibility(TextView.VISIBLE);
+            }
         });
+
+
         //Takes the user to the about activity
         Button aboutButton = findViewById(R.id.aboutButton);
         aboutButton.setOnClickListener(view ->{
@@ -49,11 +71,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        ArrayList<Quiz> quizList = QuizLoader.loadQuiz();
-        Intent intent = new Intent(this, QuizActivity.class);
-        intent.putExtra("quiz", quizList);
-        startActivity(intent);
-}}
+    }
+}
 
 
 

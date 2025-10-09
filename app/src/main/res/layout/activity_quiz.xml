@@ -76,33 +76,22 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/awserTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Réponse :"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmButton" />
-
-    <TextView
         android:id="@+id/correctAwserTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="La bonne réponse"
-        android:visibility="invisible"
+        android:textAlignment="center"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/returnButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/awserTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/resultView" />
 
     <TextView
         android:id="@+id/questionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Question"
+        android:text="Que doit-je faire dans cette situation? :"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flagImageView" />
@@ -111,11 +100,10 @@
         android:id="@+id/resultView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/correctAwserTextView"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/awserTextView"
-        app:layout_constraintVertical_bias="0.469" />
+        app:layout_constraintTop_toBottomOf="@+id/confirmButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

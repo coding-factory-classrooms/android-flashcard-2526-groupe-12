@@ -85,8 +85,6 @@ public class QuizActivity extends AppCompatActivity {
 
 
 
-
-
         inputRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(@NonNull RadioGroup group, int checkedId) {
@@ -109,7 +107,9 @@ public class QuizActivity extends AppCompatActivity {
             finish();
         }
         else {
+            TextView correctAwserTextView = findViewById(R.id.correctAwserTextView);
             resultView.setText("Mauvaise réponse");
+            correctAwserTextView.setText("La Bonne réponse était : " + quest.questions.get(quest.response));
         }
     }
 }
