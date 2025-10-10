@@ -43,6 +43,8 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Log.d("QuizAdapter", "onBindViewHolder position = " + position);
+
         Quiz quiz = quizArrayList.get(position);
         holder.imageView.setImageResource(quiz.imageid);
         String text = "";

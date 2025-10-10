@@ -33,6 +33,8 @@ public class ListQuestionActivity extends AppCompatActivity {
             ArrayList<Quiz> quizList = QuizLoader.loadQuiz(5);
             quizArrayList.addAll(quizList);
         }
+        Log.d("ListQuestionActivity", "Nombre total de quiz = " + quizArrayList.size());
+
 
         QuizAdapter adapter = new QuizAdapter(quizArrayList);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
@@ -40,7 +42,6 @@ public class ListQuestionActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         adapter.setOnItemClickListener((quiz, position) -> {
-
             Intent intent = new Intent(this, QuizActivity.class);
             intent.putParcelableArrayListExtra("quiz", quizArrayList);
             intent.putExtra("idquestion", position);
