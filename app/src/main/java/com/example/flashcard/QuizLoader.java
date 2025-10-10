@@ -42,18 +42,18 @@ public class QuizLoader {
         quizList.add(new Quiz(R.drawable.accident, questions, questions.indexOf("Continuer, je suis en retard ai travail"), 1));
 
         questions = new ArrayList<>();
-        questions.add("Faire la manoeuvre de Heimlich");
-        questions.add("Frapper dans le ventre pendant que l'aversaire est affaibli");
-        questions.add("Mettre ca main dans ca bouche pour retirer ce qui bloque");
+        questions.add("Cela sert a apporter des premier soins");
+        questions.add("C'est un super sac à main Dior");
+        questions.add("Cela sert a transporter la coke discretement");
         Collections.shuffle(questions);
-        quizList.add(new Quiz(R.drawable.etouffement, questions, questions.indexOf("Frapper dans le ventre pendant que l'aversaire est affaibli"), 3));
+        quizList.add(new Quiz(R.drawable.ifak, questions, questions.indexOf("Cela sert a transporter la coke discretement"), 3));
 
         questions = new ArrayList<>();
-        questions.add("S'arreter et appeller les secours");
-        questions.add("Continuer, je suis en retard ai travail");
-        questions.add("S'arreter et faire un selfie");
+        questions.add("C'est un masque chirurgicale");
+        questions.add("C'est pour cacher les moche");
+        questions.add("C'est un sous-vetement");
         Collections.shuffle(questions);
-        quizList.add(new Quiz(R.drawable.accident, questions, questions.indexOf("Continuer, je suis en retard ai travail"), 3));
+        quizList.add(new Quiz(R.drawable.mask, questions, questions.indexOf("C'est un sous-vetement"), 3));
 
 
         questions = new ArrayList<>();

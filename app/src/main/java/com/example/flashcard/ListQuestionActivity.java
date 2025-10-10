@@ -12,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Currency;
 
@@ -28,11 +29,7 @@ public class ListQuestionActivity extends AppCompatActivity {
             return insets;
         });
 
-        ArrayList<Quiz> quizArrayList = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            ArrayList<Quiz> quizList = QuizLoader.loadQuiz(5);
-            quizArrayList.addAll(quizList);
-        }
+        ArrayList<Quiz> quizArrayList = QuizLoader.loadQuiz(5);;
         Log.d("ListQuestionActivity", "Nombre total de quiz = " + quizArrayList.size());
 
 
@@ -43,8 +40,9 @@ public class ListQuestionActivity extends AppCompatActivity {
 
         adapter.setOnItemClickListener((quiz, position) -> {
             Intent intent = new Intent(this, QuizActivity.class);
-            intent.putParcelableArrayListExtra("quiz", quizArrayList);
-            intent.putExtra("idquestion", position);
+            ArrayList<Quiz> currentQuestion = new ArrayList<>();
+            currentQuestion.add(quizArrayList.get(position));
+            intent.putParcelableArrayListExtra("quiz", currentQuestion);
             startActivity(intent);
         });
     }
