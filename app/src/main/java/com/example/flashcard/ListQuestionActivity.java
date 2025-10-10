@@ -1,6 +1,8 @@
 package com.example.flashcard;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,20 +28,24 @@ public class ListQuestionActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Je crée en dur 15000 currencies pour avoir des trucs a afficher
-        // Ca peut venir d'une API, un DB etc
         ArrayList<Quiz> quizArrayList = new ArrayList<>();
-        for (int i = 0; i < 5000; i++) {
+        for (int i = 0; i < 20; i++) {
             ArrayList<Quiz> quizList = QuizLoader.loadQuiz(5);
+            quizArrayList.addAll(quizList);
         }
 
-        // On branche tout le monde
-        // les données a l'adapter
-        // l'adapter au recyclerview
         QuizAdapter adapter = new QuizAdapter(quizArrayList);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        adapter.setOnItemClickListener((quiz, position) -> {
+
+            Intent intent = new Intent(this, QuizActivity.class);
+            intent.putParcelableArrayListExtra("quiz", quizArrayList);
+            intent.putExtra("idquestion", position);
+            startActivity(intent);
+        });
     }
+
 }
