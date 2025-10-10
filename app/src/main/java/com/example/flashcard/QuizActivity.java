@@ -66,6 +66,9 @@ public class QuizActivity extends AppCompatActivity {
                     questvalide = true;
                     resultView.setText("Tu n'as pas répondu assez rapidement");
                     correctAwserTextView.setText("La bonne réponse était " + quest.choice.get(quest.response));
+                    for (int i = 0; i < inputRadioGroup.getChildCount(); i++) {
+                        inputRadioGroup.getChildAt(i).setEnabled(false);
+                    }
                     nbrquesterror.add(quest);
                     OnConfirmButtonClick(0);
                 }
@@ -126,6 +129,10 @@ public class QuizActivity extends AppCompatActivity {
             if (child instanceof RadioButton) {
                 RadioButton radioButton = (RadioButton) child;
                 radioButton.setText(options.get(i));
+                if (quest.difficulty == 3){
+                    radioButton.setRotationY(180);
+                    imageView.setRotation(180);
+                }
             }
         }
 

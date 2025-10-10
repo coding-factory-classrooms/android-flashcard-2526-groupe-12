@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         RadioButton easyRadioButton = findViewById(R.id.easyDifficultyRadioButton);
         RadioButton mediumRadioButton = findViewById(R.id.mediumDifficultyRadioButton);
         RadioButton hardRadioButton = findViewById(R.id.hardDifficultyRadioButton);
+        RadioButton harcoreRadioButton = findViewById(R.id.hardcoreDifficultyRadioButton);
         quizzButton.setOnClickListener(view ->{
             if (easyRadioButton.isChecked()){
                 Intent intent = new Intent(this, QuizActivity.class);
@@ -53,6 +54,13 @@ public class MainActivity extends AppCompatActivity {
             } else if (hardRadioButton.isChecked()) {
                 Intent intent = new Intent(this, QuizActivity.class);
                 ArrayList<Quiz> quizList = QuizLoader.loadQuiz(2);
+                intent.putExtra("quiz", quizList);
+                recordstarttime();
+                startActivity(intent);
+            }
+            else if(harcoreRadioButton.isChecked()){
+                Intent intent = new Intent(this,QuizActivity.class);
+                ArrayList<Quiz> quizList = QuizLoader.loadQuiz(3);
                 intent.putExtra("quiz", quizList);
                 recordstarttime();
                 startActivity(intent);

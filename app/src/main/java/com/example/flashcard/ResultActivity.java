@@ -34,7 +34,7 @@ public class ResultActivity extends AppCompatActivity {
 
         int nbrquestvalid = intent.getIntExtra("nbrquestvalid", 0);
         int nbrquestions = intent.getIntExtra("nbrquestions", 0);
-        int diffuclt = intent.getIntExtra("difficult", 0);
+        int difficult = intent.getIntExtra("difficult", 0);
         ArrayList<Quiz> nbrquesterror = intent.getParcelableArrayListExtra("nbrquesterror");
         TextView difficultTextView = findViewById(R.id.difficultTextView);
         TextView resultTextView = findViewById(R.id.resultTextView);
@@ -44,13 +44,13 @@ public class ResultActivity extends AppCompatActivity {
         String dif;
 
 
-        if (diffuclt==0){
+        if (difficult==0){
             difficultTextView.setText("Mode facile");
             dif = "facile";
-        } else if (diffuclt==1) {
+        } else if (difficult==1) {
             difficultTextView.setText("Mode moyen");
             dif = "moyen";
-        } else if (diffuclt==2) {
+        } else if (difficult==2) {
             difficultTextView.setText("Mode difficile");
             dif = "difficile";
         } else {
