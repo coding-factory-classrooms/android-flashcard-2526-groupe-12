@@ -53,6 +53,9 @@ public class ResultActivity extends AppCompatActivity {
         } else if (difficult==2) {
             difficultTextView.setText("Mode difficile");
             dif = "difficile";
+        } else if (difficult==3) {
+            difficultTextView.setText("Mode hardcore");
+            dif = "Hardcore";
         } else {
             dif = "";
         }
