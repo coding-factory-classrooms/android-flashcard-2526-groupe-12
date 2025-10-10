@@ -3,6 +3,7 @@ package com.example.flashcard;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -39,15 +40,21 @@ public class ResultActivity extends AppCompatActivity {
         TextView resultTextView = findViewById(R.id.resultTextView);
         TextView pourcentageTextView = findViewById(R.id.pourcentageTextView);
         Button errorButton = findViewById(R.id.errorButton);
-
+        Button shareButton = findViewById(R.id.shareButton);
+        String dif;
 
 
         if (diffuclt==0){
             difficultTextView.setText("Mode facile");
+            dif = "facile";
         } else if (diffuclt==1) {
             difficultTextView.setText("Mode moyen");
+            dif = "moyen";
         } else if (diffuclt==2) {
             difficultTextView.setText("Mode difficile");
+            dif = "difficile";
+        } else {
+            dif = "";
         }
 
         resultTextView.setText(nbrquestvalid + "/" + nbrquestions);
@@ -55,21 +62,30 @@ public class ResultActivity extends AppCompatActivity {
         int pourcentagecalcul = (nbrquestvalid * 100) / nbrquestions;
         pourcentageTextView.setText("Tu a eu "+ pourcentagecalcul + "% pourcent de réussite");
 
-        if (nbrquesterror!=null){
+        if (nbrquesterror!=null && !nbrquesterror.isEmpty()){
             errorButton.setOnClickListener(view -> {
                 Intent intent_quiz = new Intent(this, QuizActivity.class);
                 intent_quiz.putExtra("quiz",nbrquesterror);
                 startActivity(intent_quiz);
                 finish();
             });
+        }else {
+            errorButton.setVisibility(View.GONE);
         }
 
-        Button menuButton = findViewById(R.id.menuButton);
-        menuButton.setOnClickListener(view ->{
-            Intent intentMenu = new Intent(this, MainActivity.class);
-            startActivity(intentMenu);
-            finish();
+        shareButton.setOnClickListener(view -> {
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "J'ai eu " + nbrquestvalid+"/"+nbrquestions + " au quiz " + dif + " sur l'app Le pire sauveteur !");
+            sendIntent.setType("text/plain");
+            Intent shareIntent = Intent.createChooser(sendIntent, null);
+            startActivity(shareIntent);
         });
 
+        Button menuButton = findViewById(R.id.menuButton);
+        menuButton.setOnClickListener(view -> {
+            Intent intentMenu = new Intent(this, MainActivity.class);
+            startActivity(intentMenu);
+        });
     }
 }

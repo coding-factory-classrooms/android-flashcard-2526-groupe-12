@@ -12,17 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Flashcard">
         <activity
+            android:name=".StatistiqueActivity"
+            android:exported="false" />
+        <activity
             android:name=".ResultActivity"
             android:exported="false" />
         <activity
             android:name=".MediaInteractActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".ListQuestionActivity"
             android:exported="false" />
         <activity
             android:name=".QuizActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".AboutActivity"
             android:exported="false" />
