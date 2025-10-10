@@ -75,7 +75,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-
+        Button listQuestionButton = findViewById(R.id.listQuestionButton);
+        listQuestionButton.setOnClickListener(view ->{
+            Intent intent = new Intent(this, ListQuestionActivity.class);
+            startActivity(intent);
+        });
 
 
     }
