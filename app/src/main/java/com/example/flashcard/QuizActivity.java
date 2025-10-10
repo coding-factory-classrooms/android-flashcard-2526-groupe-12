@@ -64,12 +64,11 @@ public class QuizActivity extends AppCompatActivity {
                 if (!questvalide)
                 {
                     questvalide = true;
-                    resultView.setText("Mauvaise réponse");
+                    resultView.setText("Tu n'as pas répondu assez rapidement");
                     correctAwserTextView.setText("La bonne réponse était " + quest.choice.get(quest.response));
                     nbrquesterror.add(quest);
                     OnConfirmButtonClick(0);
                 }
-
             }
         }, 10_000);
 
@@ -83,7 +82,7 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onChronometerTick(Chronometer chronometer) {
                 long elapsedMillis = SystemClock.elapsedRealtime() - simpleChronometer.getBase();
-                if (elapsedMillis >= 10_000) {
+                if (elapsedMillis >= 10_000 || questvalide) {
                     simpleChronometer.stop();
                 }
             }
