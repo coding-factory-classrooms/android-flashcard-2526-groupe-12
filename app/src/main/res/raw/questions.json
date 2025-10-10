@@ -1,0 +1,63 @@
+[
+  {
+    "imageid": "arret",
+    "choice": [
+      "Commencer un massage cardiaque",
+      "Lui rouler une pelle",
+      "Tu es dans une tempête d'émotion et c'est ok"
+    ],
+    "response": 1,
+    "difficulty": 1
+  },
+  {
+    "imageid": "flag_uk",
+    "choice": [
+      "Japon",
+      "Royaume-Uni",
+      "Espagne"
+    ],
+    "response": 0,
+    "difficulty": 0
+  },
+  {
+    "imageid": "flag_england",
+    "choice": [
+      "Japon",
+      "Royaume-Uni",
+      "Espagne"
+    ],
+    "response": 1,
+    "difficulty": 0
+  },
+  {
+    "imageid": "blessures",
+    "choice": [
+      "Déinfecter la blessure",
+      "C'est rien, ça va guérir tout seul !",
+      "S'amputer"
+    ],
+    "response": 2,
+    "difficulty": 1
+  },
+  {
+    "imageid": "etouffement",
+    "choice": [
+      "Faire la manœuvre de Heimlich",
+      "Frapper dans le ventre pendant que l'adversaire est affaibli",
+      "Mettre sa main dans sa bouche pour retirer ce qui bloque"
+    ],
+    "response": 1,
+    "difficulty": 2
+  },
+  {
+    "imageid": "accident",
+    "choice": [
+      "S'arrêter et appeler les secours",
+      "Continuer, je suis en retard au travail",
+      "S'arrêter et faire un selfie"
+    ],
+    "response": 1,
+    "difficulty": 0
+  }
+]
+

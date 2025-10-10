@@ -1,11 +1,14 @@
 package com.example.flashcard;
 
+import com.google.gson.reflect.TypeToken;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class QuizLoader {
 
      static ArrayList<Quiz> loadQuiz(int difficulty) {
+
         ArrayList<Quiz> quizList = new ArrayList<>();
 
         ArrayList<String> questions = null;
