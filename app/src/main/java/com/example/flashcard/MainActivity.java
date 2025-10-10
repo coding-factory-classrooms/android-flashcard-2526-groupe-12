@@ -1,18 +1,13 @@
 package com.example.flashcard;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -33,26 +28,41 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        //Reboot prefs
+//        SharedPreferences prefs = getSharedPreferences("stats", MODE_PRIVATE);
+//        prefs.edit().clear().apply();
+
         //When the Quizz button is pressed, check the choosen difficulty setting and send it
         Button quizzButton = findViewById(R.id.quizzButton);
         RadioButton easyRadioButton = findViewById(R.id.easyDifficultyRadioButton);
         RadioButton mediumRadioButton = findViewById(R.id.mediumDifficultyRadioButton);
         RadioButton hardRadioButton = findViewById(R.id.hardDifficultyRadioButton);
+        RadioButton harcoreRadioButton = findViewById(R.id.hardcoreDifficultyRadioButton);
         quizzButton.setOnClickListener(view ->{
             if (easyRadioButton.isChecked()){
                 Intent intent = new Intent(this, QuizActivity.class);
                 ArrayList<Quiz> quizList = QuizLoader.loadQuiz(0);
                 intent.putExtra("quiz", quizList);
+                recordstarttime();
                 startActivity(intent);
             } else if (mediumRadioButton.isChecked()){
                 Intent intent = new Intent(this, QuizActivity.class);
                 ArrayList<Quiz> quizList = QuizLoader.loadQuiz(1);
                 intent.putExtra("quiz", quizList);
+                recordstarttime();
                 startActivity(intent);
             } else if (hardRadioButton.isChecked()) {
                 Intent intent = new Intent(this, QuizActivity.class);
                 ArrayList<Quiz> quizList = QuizLoader.loadQuiz(2);
                 intent.putExtra("quiz", quizList);
+                recordstarttime();
+                startActivity(intent);
+            }
+            else if(harcoreRadioButton.isChecked()){
+                Intent intent = new Intent(this,QuizActivity.class);
+                ArrayList<Quiz> quizList = QuizLoader.loadQuiz(3);
+                intent.putExtra("quiz", quizList);
+                recordstarttime();
                 startActivity(intent);
             }
             else {
@@ -67,6 +77,21 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        Button statButton = findViewById(R.id.statButton);
+        statButton.setOnClickListener(view ->{
+            Intent intent = new Intent(this, StatistiqueActivity.class);
+            startActivity(intent);
+        });
+
+
+
+
+    }
+
+    private void recordstarttime() {
+        long time = System.nanoTime();
+        SharedPreferences prefs = getSharedPreferences("stats", MODE_PRIVATE);
+        prefs.edit().putLong("starttime", time).apply();
     }
 }
 

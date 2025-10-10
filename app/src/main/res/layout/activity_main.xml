@@ -61,20 +61,35 @@
             android:id="@+id/easyDifficultyRadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Facile" />
+            android:rotationY="0"
+            android:text="Facile"
+            android:textColor="#4CAF50"
+            android:textColorLink="#4CAF50" />
 
         <RadioButton
             android:id="@+id/mediumDifficultyRadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Moyen" />
+            android:text="Moyen"
+            android:textColor="#FFC107"
+            android:textColorLink="#FFC107" />
 
         <RadioButton
             android:id="@+id/hardDifficultyRadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Difficile" />
+            android:text="Difficile"
+            android:textColor="#FF5722"
+            android:textColorLink="#FF5722" />
+
+        <RadioButton
+            android:id="@+id/hardcoreDifficultyRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HARDCORE"
+            android:textColor="#FA0000"
+            android:textColorLink="#FA0000" />
     </RadioGroup>
 
     <TextView
@@ -89,5 +104,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/difficultyTitleTextView" />
+
+    <Button
+        android:id="@+id/statButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Statistique"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/difficultyRadioGroup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

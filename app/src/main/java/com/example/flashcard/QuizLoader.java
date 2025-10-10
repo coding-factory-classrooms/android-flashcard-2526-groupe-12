@@ -55,6 +55,20 @@ public class QuizLoader {
         Collections.shuffle(questions);
         quizList.add(new Quiz(R.drawable.accident, questions, questions.indexOf("Continuer, je suis en retard ai travail"), 2));
 
+        questions = new ArrayList<>();
+        questions.add("Faire la manoeuvre de Heimlich");
+        questions.add("Frapper dans le ventre pendant que l'aversaire est affaibli");
+        questions.add("Mettre ca main dans ca bouche pour retirer ce qui bloque");
+        Collections.shuffle(questions);
+        quizList.add(new Quiz(R.drawable.etouffement, questions, questions.indexOf("Frapper dans le ventre pendant que l'aversaire est affaibli"), 3));
+
+        questions = new ArrayList<>();
+        questions.add("S'arreter et appeller les secours");
+        questions.add("Continuer, je suis en retard ai travail");
+        questions.add("S'arreter et faire un selfie");
+        Collections.shuffle(questions);
+        quizList.add(new Quiz(R.drawable.accident, questions, questions.indexOf("Continuer, je suis en retard ai travail"), 3));
+
         quizList.removeIf(n -> (n.difficulty != difficulty && difficulty != 5));
         Collections.shuffle(quizList);
 
